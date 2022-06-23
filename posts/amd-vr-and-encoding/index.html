@@ -1,0 +1,119 @@
+<!doctype html><html lang=en-us>
+<head>
+<title>AMD, Virtual Reality and Video Encoding // Crayblog</title>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.92.2">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Crayphish">
+<meta name=description content>
+<link rel=stylesheet href=https://crayphish.github.io/css/main.min.adcdb371de426d70b95fe186b324e0e8fc0b085dd3d9d28947d6b51689c2f239.css>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="AMD, Virtual Reality and Video Encoding">
+<meta name=twitter:description content="It&rsquo;s June 2022. You&rsquo;ve just got an Oculus/Meta Quest 2 and you&rsquo;re raring to use it for PC Virtual Reality. You plug it in, only to find the image quality in VR is fuzzy, blocky or even scrambled, or the computer keeps crashing. You have an AMD Graphics Card. Welcome to hell. Here&rsquo;s the situation:
+Virtual Reality State-of-play As of writing there are two main ways to get into VR: Standalone headsets and PCVR headsets.">
+<meta property="og:title" content="AMD, Virtual Reality and Video Encoding">
+<meta property="og:description" content="It&rsquo;s June 2022. You&rsquo;ve just got an Oculus/Meta Quest 2 and you&rsquo;re raring to use it for PC Virtual Reality. You plug it in, only to find the image quality in VR is fuzzy, blocky or even scrambled, or the computer keeps crashing. You have an AMD Graphics Card. Welcome to hell. Here&rsquo;s the situation:
+Virtual Reality State-of-play As of writing there are two main ways to get into VR: Standalone headsets and PCVR headsets.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://crayphish.github.io/posts/amd-vr-and-encoding/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-06-16T20:14:48+12:00">
+<meta property="article:modified_time" content="2022-06-16T20:14:48+12:00">
+</head>
+<body>
+<header class=app-header>
+<a href=https://crayphish.github.io><img class=app-header-avatar src=/img/square-tired.jpg alt=Crayphish></a>
+<h1>Crayblog</h1>
+<nav class=app-header-menu>
+<a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/tags/>Tags</a>
+-
+<a class=app-header-menu-item href=/about/>About</a>
+</nav>
+<p>Crayphish/ザｒｙガニ</p>
+<div class=app-header-social>
+<a href=https://github.com/Crayphish target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a>
+<a href=https://twitter.com/Zarygani target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter"><title>Twitter</title><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg>
+</a>
+</div>
+</header>
+<main class=app-container>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>AMD, Virtual Reality and Video Encoding</h1>
+<div class=post-meta>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Jun 16, 2022
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+11 min read
+</div>
+</div>
+</header>
+<div class=post-content>
+<p><em>It&rsquo;s June 2022. You&rsquo;ve just got an Oculus/Meta Quest 2 and you&rsquo;re raring to use it for PC Virtual Reality. You plug it in, only to find the image quality in VR is fuzzy, blocky or even scrambled, or the computer keeps crashing. You have an AMD Graphics Card. Welcome to hell. Here&rsquo;s the situation:</em></p>
+<h2 id=virtual-reality-state-of-play>Virtual Reality State-of-play</h2>
+<p>As of writing there are two main ways to get into VR: <strong>Standalone headsets</strong> and <strong>PCVR headsets</strong>.</p>
+<p><img src=/img/pcvr-scaled-example.png alt="PCVR headset example"></p>
+<ul>
+<li><strong>PCVR headsets</strong> are designed to be plugged into a powerful gaming computer. This computer does all the heavy lifting of rendering the VR graphics, then sends them to the headset via a big display cable. This is the original experience touted during the media rush in 2016 for the Oculus Rift CV1, and the current posterchild for this type of headset is the Valve Index, which uses two or more external &lsquo;base stations&rsquo; setup in a room to track the player within the space bordered by the stations. The base stations provide the best possible tracking with a good amount of coverage, and can track more than just the headset and it&rsquo;s controllers. These are typically used by VR enthusiasts who are willing to spend a decent amount of money, time and space on a VR setup. You may have seen VR full-body tracking videos on Youtube; these usually use an Index setup. A full setup of this kind typically costs a lot of money, but grants a high level of flexibility and expansion.</li>
+</ul>
+<p><img src=/img/standalone-scaled-example.png alt="Standalone headset example"></p>
+<ul>
+<li><strong>Standalone headsets</strong> are designed to be used on their own, and have a computer in the headset itself that can render limited VR experiences. The Meta (Oculus) Quest 2 is the current posterchild for this type of experience, and is fairly popular at the moment thanks to it&rsquo;s low price and pretty extensive feature-set. This headset uses &lsquo;inside-out&rsquo; tracking, meaning head and controller movements are tracked by the cameras on the headset itself. This eliminates the need for base stations, but introduces algorithmic fuzzing into the tracking of controllers, which can regularly leave the sight of the headset cameras, however overall tracking is very good. The headset itself can play some impressive VR games (many people have bought this headset exclusively to play Beat Saber for example), but because of the small size and limited cooling situation, most experiences are performance limited, meaning they play simply or look worse than their PCVR counterparts. However, these headsets can be connected to a PC either via a long USB cable or by Wi-Fi, which gives you the ability to access higher-end PCVR game experiences. Since USB and Wi-Fi can&rsquo;t push as much data as a phat display cable can, video from the PC needs to be compressed to do this.</li>
+</ul>
+<h2 id=the-problem-video-encoding>The Problem: Video Encoding</h2>
+<p>You (and I) want to use the &lsquo;standalone&rsquo; Quest 2 for PCVR. The PC only has USB or Wi-Fi bandwidth, and needs to compress video before sending it to the headset to be decompressed. This process needs to be done fast because any latency will lead to a delay between the player&rsquo;s movement and the response in the headset. This delay will typically induce motion sickness in VR. There are a couple of tricks done by the hardware to reduce the percieved delay, thanks to the <a href=https://developer.oculus.com/blog/asynchronous-timewarp-examined/>Asynchronous Timewarp</a> feature, and some controller movement prediction. This works well when the hardware is producing the frames at reasonably low latencies. You <em>want</em> as low a latency from the game to the headset and back as possible, but you can tolerate a few tens of milliseconds worth of delay without a significant effect on stomach or gameplay. This opens up the opportunity for video compression to be a slight part of that delay.</p>
+<p>The Quest 2 supports H.264 and HEVC (also known as H.265) video decompression, two very common internet video codecs. HEVC is newer, and results in higher quality for the same amount of data. On the PC side, typically the fastest video encoder is on the graphics card in recent years. However, AMD cards aren&rsquo;t as good at encoding H.264 videos as NVIDIAs are. They are slower at it, and the result is a lower quality image. In a situation where the video they are compressing is directly in front of your face as is the case in VR, AMD&rsquo;s lacking compression is more apparent than ever; you will see blocky artifacts, obvious color banding, smearing of high complexity scenes, etc. Compounding matters further, even the most modern AMD GPU, tasked with encoding an H.264 steam that has a pixel width bigger than ~2700 will result in a latency spike from around 4ms to 10ms. At 90hz, this is almost an entire frame worth of lag before the frame is even transported to the VR headset! For comparison, NVIDIA&rsquo;s encoder gets it done in 2-3ms.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:center><img src=/img/youtube-video-encoding.png alt="Youtube Low Encoding"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center><strong>Example of H.264 at a low bitrate absolutely obliterating some Monster Hunter World footage</strong></td>
+</tr>
+</tbody>
+</table>
+<p>As mentioned, the Quest 2 and new AMD hardware also support HEVC, a newer and higher quality compression solution. AMD&rsquo;s new cards <em>were</em> pretty decent at it. Unfortunately, it&rsquo;s been broken since AMD driver updates from November 2021. On any newer drivers, using HEVC for VR encoding will cause a driver crash while playing most VR games. An easy test to confirm this is to try playing Beat Saber via <a href=https://www.vrdesktop.net/>Virtual Desktop</a> with HEVC enabled in the streamer settings. Typically the game will crash the AMD driver shortly after launch.</p>
+<p>So, just downgrade the driver and wait for a fix, right? Well&mldr; the last driver with working HEVC was 21.10.1 back in October 2021, and this problem has persisted for 7 months and counting. AMD has also improved their game performance (particularly in DX11 which is used in a lot of VR games) quite a bit in that time, meaning you are trading HEVC image quality for game performance if you want to juggle drivers. How annoying! As of writing, the most recent AMD official, optional driver is 22.5.2. HEVC is still broken and crashes the driver, and H.264&rsquo;s bitrate has been constrained to a degree that makes streamed VR quality worse than ever! If you&rsquo;ve been dabbling in VR for a while, you have had your image quality experience get worse and worse as your GPU game performance improves.</p>
+<h2 id=slightly-less-of-a-problem-motion-smoothing>Slightly less of a problem(?): Motion Smoothing</h2>
+<p>I can&rsquo;t personally vouch for this one as much as the above issue since I have mostly seen mixed results per game, per API, per broadcasting solution, per person, etc. The cause of the issue is unclear and I can&rsquo;t entirely pin the blame on AMD for this since I don&rsquo;t know where the issue is occurring in each situation, but I will expand on it below:</p>
+<p>In VR, the user needs to get consistently smooth updates to the LCD in the headset that correspond with their movements in order to avoid motion sickness. To achieve this, games run at a high framerate that matches the refresh rate of the headset so that frames always arrive smoothly to the eyes. However, VR headsets are often pushing 4k or above framebuffers and expecting 90-144fps to reach their target refresh rate. This is pretty hard for most middle-of-the-road hardware to consistently hit, if at all. In times where the framerate drops below the target refresh, both main VR APIs have implemented a form of fake frame insertion to make up for the missing frames, known on SteamVR as &ldquo;Motion Smoothing&rdquo; and on Oculus platforms as <a href=https://developer.oculus.com/blog/asynchronous-spacewarp/>&ldquo;Asynchronous Spacewarp&rdquo;</a> (different from the aforementioned Asynchronous Timewarp).</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:center><img src=/img/asw.png alt="Asynchronous Spacewarp"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center><strong>Asynchronous Spacewarp example diagram, from official Oculus presentation</strong></td>
+</tr>
+</tbody>
+</table>
+<p>VR software in it&rsquo;s current iteration is often in a &lsquo;hobbyist&rsquo; or experimental support state, and many games are not well optimized for the hardware. As a result, there is a lot of stutter that the smoothing feature is meant to fix. On NVIDIA hardware, this feature typically works, meaning stutters and framedrops are not as apparent or sickness inducing. However, for some reason this doesn&rsquo;t work correctly on AMD hardware. Typically the feature enables too late, or doesn&rsquo;t enable at all when framerates drop, resulting in a juddery experience for the user in the headset, which can be stomach turning.
+I can only speculate on why this doesn&rsquo;t work. Maybe AMD graphics cards are not presenting performance metrics to the VR API on time for it to decide to kick into smoothing mode? Maybe the GPU can&rsquo;t easily switch from 90 frames to 45 with insertions and back without a bit of stutter? Whatever the reason is, you will experience more unexpected stutters and slowdown with AMD cards, regardless of the performance tier, unless you can adjust your settings to keep the framerate at the refresh rate at all times. This usually means compromising resolution and graphical settings that would otherwise be acceptable on the equivalent NVIDIA hardware. In some games (Microsoft Flight Simulator), achieving an appropriately high framerate is practically impossible, and this feature needs to be used at all times for normal play.</p>
+<h2 id=whats-amd-doing-about-these-problems>What&rsquo;s AMD doing about these problems?</h2>
+<p>Unfortunately unclear. AMD have been radio silent on the encoder issue for months, and because of the fractured and niche nature of the VR hardware community, there has been no community effort to get a response from them yet. Some users are not aware of the issue, or they are relegated to software specific communities such as Virtual Desktop&rsquo;s Discord (where most users will suggest you buy an NVIDIA card instead) or various VR enthusiast spaces on Steam Communities, AMD Community Forums, etc. Some people are not aware of the issue at all, since Oculus official Link software simply picks H.264 without informing the user. If the user never experienced better quality, they may just assume the blocky H.264 experience currently available is the standard. Some users simply switched to an NVIDIA card after being made aware of the issue. The creator of <a href=https://www.vrdesktop.net/>Virtual Desktop</a> <a href=https://twitter.com/vrdesktop>ggodin</a> has contacted AMD multiple times about the encoder issue and AMD appear to break this featureset regularly. The official Oculus Link solutions simply avoid surfacing HEVC support at all.</p>
+<p>I&rsquo;ve heard from the Virtual Desktop <a href=https://discord.com/invite/UqdJtAV8>Discord</a> that this is not the first time AMD has broken their video encoders and then not done anything to fix them for a while. AMD is probably counting on this issue to remain niche so they can safely ignore it and only risk a small subset of users actually abandoning their products. I think this is a really embarrassing tactic, especially as someone who would like to see AMD maintain competitiveness with NVIDIA. HEVC encoding support is touted in the specs of modern AMD GPUs. Many users who are looking to buy an AMD GPU are not aware that this feature they are expecting to utilize doesn&rsquo;t work properly, since no official channels state it as a known issue and the concern from the community is fractured. Perhaps I&rsquo;m underestimating the workload required to get previously-working encoder support going again, but shouldn&rsquo;t this be a relatively easy fix for AMD?</p>
+<p>As for the Motion Smoothing issue, for now, speculation on the cause of this issue is anecdotal, and I don&rsquo;t have multiple hardware configurations I can use to run comparison tests. We need more people using various VR hardware with good data to further clarify where/why this problem occurs. I can&rsquo;t really pin the blame on AMD when I&rsquo;m not sure where this issue is actually occurring in the software chain.</p>
+<h2 id=what-to-do>What To Do?</h2>
+<p>If you are buying a computer with VR as one of the primary use-cases, you gotta buy NVIDIA. However, there are a lot of reasons why you might not be able to do this. Maybe the market in your country prices these cards radically different, or availability is low, or you are a nerd who likes AMD&rsquo;s open source support that allows for a stable Wayland environment and a mixed-adaptive-sync multi-monitor setup?</p>
+<p>Anyway, if you&rsquo;re stuck with the AMD like I am, you can still get a compromised albeit decent VR experience. Oculus Link will set most of the variables for you, but you can check out Espionage724&rsquo;s <a href=https://wiki.realmofespionage.xyz/devices:oculus_quest_2>wiki page</a> where he details performance results of the encoders and useful settings for an RX 580 and an RX 6600 XT. On Virtual Desktop, you are at the mercy of whatever driver you have installed. Check VD&rsquo;s <a href=https://discord.com/invite/UqdJtAV8>Discord</a> for announcements that report the latest working AMD driver and recommended settings.
+If you want to avoid the Motion Smoothing issue, the simplest solution is to just adjust your rendering resolution (sometimes referred to supersampling) down until your hardware can hit the refresh rate consistently. This issue is probably less apparent on Quest 2 setups since the timewarp feature is done by the headset, and doesn&rsquo;t get affected by the framedrops like it might on standalone headsets.</p>
+<p>Lastly, nag AMD! Crash the driver and submit bug reports each update. Post your experiences here in this <a href=https://community.amd.com/t5/drivers-software/amd-drivers-and-vr/td-p/526584>AMD Community Thread</a>, but keep it respectful. These issues should be at least acknowledged and clarified by AMD. If there is a reason why the HEVC encoder can&rsquo;t be fixed, I would like an explanation! Features should not go unusable for months without word from the company whether they will be fixed. As time drags on, I&rsquo;ve become increasingly disappointed in AMD, despite having a preference for their hardware thanks to good open source support and some of NVIDIAs less attractive business practices. The fact that they are cheaper for the same rasterized performance in my market also helps&mldr;</p>
+<p>That&rsquo;s it for now. Given that AMD has caught up in rasterization in the last generation, it&rsquo;d be nice for them to catch up in features as well, or at least the ones that they claim the hardware supports, like HEVC encoding. I&rsquo;m hoping for a future where AMD users will have a good VR experience and would like to be a part of that future, but I&rsquo;m not going to hold on forever.</p>
+<hr>
+<p><em>Credit to <a href=https://www.irasutoya.com/>Irasutoya</a> for funny VR example images</em></p>
+</div>
+<div class=post-footer>
+</div>
+</article>
+</main>
+</body>
+</html>
